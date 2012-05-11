@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+{% block baslik %}{{ makale.baslik }}{% endblock %}
+{% block metalar %}
+		<meta name="description" content="{{ makale.aciklama_sef }}">
+		<meta name="keywords" content="{{ makale.etiketler }}">
+{% endblock %}
+{% block cssler %}
+		<link href="/static/js/prettify/prettify.css" rel="stylesheet">
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
+{% endblock %}
+{% block navbar %}
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="/">Halit Alptekin</a>
+					<div class="nav-collapse">
+						<ul class="nav">
+							<li><a href="/">Anasayfa</a></li>
+							<li><a href="/blog">Blog</a></li>
+							<li><a href="/makaleler">Makaleler</a></li>
+							<li><a href="/dosyalar">Dosyalar</a></li>
+							<li><a href="#">Hakkimda</a></li>
+							<li><a href="#">Iletisim</a></li>
+						</ul>				
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}
+{% block content %}
+			<div class="row">
+					<div class="span3">
+						<h3 class="submenu">HdBlog</h3>
+						<div class="progress progress-info">
+						  <div class="bar" style="width: 20%;">%20</div>
+						</div>
+						<h3 class="submenu">Kategoriler</h3>
+						 <ul class="nav nav-list">
+							<li class="nav-header">Blog</li>
+							{% for bkategori in bkategoriler %}
+							<li><a href="{{ bkategori.get_absolute_url }}" title="{{ bkategori.aciklama_sef }}"><i class="{{ bkategori.kategori_resim }}"></i> {{ bkategori.sef_baslik }}</a></li>
+							{% endfor %}
+							<li class="nav-header">Makale</li>	
+							{% for mkategori in mkategoriler %}
+							<li><a href="{{ mkategori.get_absolute_url }}" title="{{ mkategori.aciklama_sef }}"><i class="{{ mkategori.kategori_resim }}"></i> {{ mkategori.sef_baslik }}</a></li>
+							{% endfor %}		
+						</ul>
+						<br>
+						<h3 class="submenu">Sayfalar</h3>
+						 <ul class="nav nav-list">
+							<li><a href="#"><i class="icon-warning-sign"></i> Lisans Sartlari</a></li>
+							<li><a href="#"><i class="icon-road"></i> Site Haritasi</a></li>
+							<li><a href="#"><i class="icon-search"></i> Arama Paneli</a></li>
+						</ul>
+						<br>					
+						<h3 class="submenu">Makaleler</h3>
+						<ul class="nav nav-list">
+							{% for lmakale in listmakale %}
+							<li><a href="{{ lmakale.get_absolute_url }}" title="{{ lmakale.aciklama_sef }}"><i class="{{ lmakale.kategori.kategori_resim }}"></i> {{ lmakale.sef_baslik }}</a></li>
+							{% endfor %}
+						</ul>
+						<br>
+						<h3 class="submenu">Dosyalar</h3>
+						<ul class="nav nav-list">
+							<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
+							<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
+							<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
+							<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
+							<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
+						</ul>
+						<br>
+						<h3 class="submenu">Duyurular</h3>
+						<ul class="nav nav-list">
+							<li><a href="#" title="Deneme Duyuru"><i class="icon-exclamation-sign"></i> Deneme Duyuru</a></li>
+							<li><a href="#" title="Deneme Duyuru"><i class="icon-exclamation-sign"></i> Deneme Duyuru</a></li>
+							<li><a href="#" title="Deneme Duyuru"><i class="icon-exclamation-sign"></i> Deneme Duyuru</a></li>
+							<li><a href="#" title="Deneme Duyuru"><i class="icon-exclamation-sign"></i> Deneme Duyuru</a></li>
+							<li><a href="#" title="Deneme Duyuru"><i class="icon-exclamation-sign"></i> Deneme Duyuru</a></li>
+						</ul>
+						<br>
+						<h3 class="submenu">Reklamlar</h3>
+						<ul class="nav nav-list">
+							<li><a href="#" title="Deneme Reklam"><i class="icon-shopping-cart"></i> Deneme Reklam</a></li>
+							<li><a href="#" title="Deneme Reklam"><i class="icon-shopping-cart"></i> Deneme Reklam</a></li>
+							<li><a href="#" title="Deneme Reklam"><i class="icon-shopping-cart"></i> Deneme Reklam</a></li>
+							<li><a href="#" title="Deneme Reklam"><i class="icon-shopping-cart"></i> Deneme Reklam</a></li>
+							<li><a href="#" title="Deneme Reklam"><i class="icon-shopping-cart"></i> Deneme Reklam</a></li>
+						</ul>
+						<br>					
+						<a href="#" class="thumbnail">
+							<img src="/media/260x180.gif" alt="">
+						</a>
+						<br>
+						<a href="#" class="thumbnail">
+							<img src="/media/260x180.gif" alt="">
+						</a>
+					</div>
+					<div class="span9">
+						<div class="alert alert-info">
+						  <a class="close" data-dismiss="alert" href="#">&times;</a>
+							<div class="row">
+							  <div class="span4"><h4 class="alert-heading">Reklam Alani #1</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
+							  <div class="span4"><h4 class="alert-heading">Reklam Alani #2</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
+							</div>
+						</div>
+						<h1><a>{{ makale.baslik|title }}</a> <small>{{ makale.olusturulma|date:"d F Y" }} <g:plusone size="medium"></g:plusone></small></h1> 
+						<p class="lead"> {{ makale.aciklama|title }}</p>
+						{{ makale.icerik|safe }}
+						<hr>
+						<div class="alert alert-info">
+						  <a class="close" data-dismiss="alert" href="#">&times;</a>
+							<div class="row">
+							  <div class="span4"><h4 class="alert-heading">Reklam Alani #3</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
+							  <div class="span4"><h4 class="alert-heading">Reklam Alani #4</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
+							</div>
+						</div>
+						<br>
+						<!-- Bilgiler -->
+						<table class="table table-bordered">
+							<tbody>
+							
+							<tr>
+								<th>
+									Yazar
+								</th>
+								<td>
+									<a href="#"><span class="label label-info">{{ makale.yazar.first_name }} {{ makale.yazar.last_name }}</span></a>
+								</td>
+							</tr>
+							
+							<tr>
+								<th>
+									Kategori
+								</th>
+								<td>
+									<a href="{{ makale.kategori.get_absolute_url }}"><span class="label label-info">{{ makale.kategori }}</span></a>
+								</td>
+							</tr>
+
+							<tr>
+								<th>
+									Aciklama
+								</th>
+								<td>
+									{{ makale.aciklama_sef }}
+								</td>
+							</tr>						
+							
+							<tr>
+								<th>
+									Etiketler
+								</th>
+								<td>
+									{% for etiket in makale.get_tags %}
+									<a href="/makaleler/{{ etiket }}" title="{{ etiket }}"><span class="label label-info"># {{ etiket }}</span></a>
+									{% endfor %}
+								</td>
+							</tr>						
+
+							<tr>
+								<th>
+									Kelime Sayisi
+								</th>
+								<td>
+									{{ makale.icerik|wordcount }}
+								</td>
+							</tr>
+
+							<tr>
+								<th>
+									Metin Uzunlugu
+								</th>
+								<td>
+									{{ makale.icerik|length }}
+								</td>
+							</tr>
+
+							<tr>
+								<th>
+									Eklenme Tarihi
+								</th>
+								<td>
+									{{ makale.olusturulma }}
+								</td>
+							</tr>
+							
+							<tr>
+								<th>
+									Guncellenme Tarihi
+								</th>
+								<td>
+									{{ makale.degistirilme }}
+								</td>
+							</tr>							
+							
+							<tr>
+								<th>
+									Sosyal Medya
+								</th>
+								<td>
+									<a href="http://www.facebook.com/share.php?u={{ site.domain }}{{ makale.get_absolute_url }}" target="_blank" title="{{ makale.aciklama_sef }}"><img width="24" height="24" src="/media/img/sosyal/facebook.png" alt="Facebook"></a>
+									<img width="24" height="24" src="/media/img/sosyal/friendfeed.png" alt="Friendfeed">
+									<img width="24" height="24" src="/media/img/sosyal/google.png" alt="Google">
+									<img width="24" height="24" src="/media/img/sosyal/reddit.png" alt="Reddit">
+									<img width="24" height="24" src="/media/img/sosyal/digg.png" alt="Digg">
+									<img width="24" height="24" src="/media/img/sosyal/delicious.png" alt="Delicious">
+									<img width="24" height="24" src="/media/img/sosyal/stumbleupon.png" alt="Stumbleupon">
+									<a href="https://twitter.com/halitalptekin" class="twitter-follow-button" data-show-count="false" data-lang="tr">Takip et: @halitalptekin</a>
+									<a href="https://twitter.com/share" class="twitter-share-button" data-via="halitalptekin" data-lang="tr" data-hashtags="hdblog">Tweetle</a>
+									
+								</td>
+							</tr>						
+							
+							</tbody>
+						</table>				
+					</div>
+				</div>
+			<hr>
+			<!-- Alt Kisim -->
+			<div class="row">
+				<div class="span12 footer">
+					<p>Tasarim: <span class="label label-info">Bootstrap</span> Kodlama: <span class="label label-info">Python ve Django</span> Sistem: <span class="label label-info">HDBlog</span></p>
+					<p>Halit Alptekin &copy; 2012</p>
+				</div>
+			</div>
+{% endblock %}	
+{% block javascriptler %}
+	<script src="/static/js/jquery.js"></script>
+	<script src="/static/js/bootstrap-alert.js"></script>
+	<script src="/static/js/bootstrap-collapse.js"></script>
+	<script src="/static/js/prettify/prettify.js"></script>
+	<script type="text/javascript" src="http://apis.google.com/js/plusone.js">
+	  {lang: 'tr'}
+	</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
+{% endblock %}

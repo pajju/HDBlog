@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta Etiketleri // Arama Motoru Hosgeldiniz  -->
+		<meta charset="utf-8">
+		<title>{% block baslik %}{% endblock %} - {{ site.name }}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% block metalar %}
+		<meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+		<meta name="keywords" content="halit, alptekin, programlama, blog, personal blog, kisisel blog, halit alptekin, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">		
+		{% endblock %}
+		<meta name="author" content="Halit Alptekin">
+		<meta name="generator" content="Adobe Firewoks CS5, Bootstrap, Python, Django" />
+		<meta name="robots" content="index, follow, all"/>
+		{% block cssler %}
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
+		{% endblock %} 
+
+		<style type="text/css">
+			body {
+				padding-top: 60px;
+				padding-bottom: 40px;
+			}
+			body, p {
+				font-size: 14px;
+			}
+			.hero-unit {
+				text-align: center;
+				background: #ffffff;
+			}
+			.hero-unit p{
+				color: #777777;
+				font-size: 21px;
+			}
+			.footer{
+				text-align: center;
+			}
+		</style>
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link rel="shortcut icon" href="/static/favicon.ico">
+	</head>
+
+	<body onload="prettyPrint(); adjustHeightInParent()">
+		<!-- Nav Bar -->
+{% block navbar %}{% endblock %}
+		<div class="container">
+{% block content %}{% endblock %}
+		</div>
+		{% block javascriptler %}{% endblock %}
+	</body>
+</html>

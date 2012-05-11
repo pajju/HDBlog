@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block baslik %}Halit Alptekin Personal Blog - HDBlog{% endblock %}
+{% block navbar %}
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="/">Halit Alptekin</a>
+					<div class="nav-collapse">
+						<ul class="nav">
+							<li><a href="/">Home</a></li>
+							<li><a href="/blog">Blog</a></li>
+							<li><a href="/makaleler">Articles</a></li>
+							<li><a href="dosyalar.html">Files</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>				
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}							
+{% block content %}
+			<!-- Ana Tavan -->
+			<div class="hero-unit">
+				<h1>Just Another Personal Blog</h1>
+				<p>Love to system and web security, programming, embedded systems and mathematic.</p>
+				<p>I am studying at Karadeniz Technical University</p>			
+			</div>
+
+			<!-- Kolonlar -->
+			<div class="row">
+				<div class="span4">
+					<h2>Who am I?</h2>
+					<p>My name Halit Alptekin, 18 years old, a Computer Engineering Student at KTU, currently living in Trabzon, Turkey. My passion is about computer science. Love to system and web security, programming, embedded systems and mathematic.</p>
+				</div>
+				<div class="span4">
+					<h2>What I do?</h2>
+					<p>To build simple web, system, desktop applications, i usually use Php and Python, sometimes use Java, Perl and C#. Also, i love penetration test to server. For my comfortable, i love to use Linux. Finally, i'm SEO amateur and working to improve my skills.</p>
+				</div>
+				<div class="span4">
+					<h2>Recent Blog</h2>
+					<ul>
+					{% for yazi in yazilar %}
+						{% if forloop.first %}
+						<li> <span class="label label-success">New</span> <a href="{{ yazi.get_absolute_url }}" title="{{ yazi.aciklama_sef }}">{{ yazi.sef_baslik }}</a> </li>
+						{% else %}
+						<li> <a href="{{ yazi.get_absolute_url }}" title="{{ yazi.aciklama_sef }}">{{ yazi.sef_baslik }}</a> </li>
+						{% endif %}
+					{% endfor %}
+					</ul>
+				</div>
+			</div>
+			
+			<hr>			
+			<!-- Alt Kisim -->
+			<div class="row">
+				<div class="span12 footer">
+					<p>Get Connected:  <a href="http://facebook.com/hltalptkn" target="_blank">Facebook</a> | <a href="http://twitter.com/halitalptekin" target="_blank">Twitter</a> | <script type="text/javascript">document.write("<a href='mailto:&#105;&#110;&#102;&#111;&#064;&#104;&#097;&#108;&#105;&#116;&#097;&#108;&#112;&#116;&#101;&#107;&#105;&#110;&#046;&#099;&#111;&#109;?subject=Blog'>E-Mail</a>");</script> |  <a href="http://id.linkedin.com/in/halitalptekin" target="_blank">LinkedIn</a> |  <a href="#" target="_blank">RSS</a></p>
+					<p>&copy; Halit Alptekin 2012</p>
+				</div>
+			</div>
+{% endblock %}			
