@@ -138,6 +138,7 @@ INSTALLED_APPS = (
 	'hdmakale',
 	'hdsayfalar',
 	'hddosya',
+	'hdlink',
 )
 
 # A sample logging configuration. The only tangible logging

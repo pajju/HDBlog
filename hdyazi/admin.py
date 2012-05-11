@@ -4,6 +4,7 @@ from hdyazi.models import Yazilar, Kategoriler
 from hdmakale.models import Makaleler, mKategoriler
 from hdsayfalar.models import Sayfalar
 from hddosya.models import Dosyalar
+from hdlink.models import Link
 from django.db import models
 
 class KategoriAdmin(admin.ModelAdmin):
@@ -39,9 +40,13 @@ class DosyaAdmin(admin.ModelAdmin):
 	list_display = ('baslik','aciklama','dosya_kaynak')
 	prepopulated_fields = {"slug": ("baslik",)}
 	
+class LinkAdmin(admin.ModelAdmin):
+	list_display = ('link','hits')
+	
 admin.site.register(Yazilar, YazilarAdmin)
 admin.site.register(Kategoriler, KategoriAdmin)
 admin.site.register(Makaleler, MakalelerAdmin)
 admin.site.register(mKategoriler, mKategoriAdmin)
 admin.site.register(Sayfalar, SayfalarAdmin)
 admin.site.register(Dosyalar, DosyaAdmin)
+admin.site.register(Link, LinkAdmin)
