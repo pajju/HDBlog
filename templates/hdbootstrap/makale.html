@@ -25,8 +25,8 @@
 							<li><a href="/blog">Blog</a></li>
 							<li><a href="/makaleler">Makaleler</a></li>
 							<li><a href="/dosyalar">Dosyalar</a></li>
-							<li><a href="#">Hakkimda</a></li>
-							<li><a href="#">Iletisim</a></li>
+							<li><a href="/sayfa/hakkimda">Hakkimda</a></li>
+							<li><a href="/iletisim">Iletisim</a></li>
 						</ul>				
 					</div>
 				</div>
@@ -54,25 +54,23 @@
 						<br>
 						<h3 class="submenu">Sayfalar</h3>
 						 <ul class="nav nav-list">
-							<li><a href="#"><i class="icon-warning-sign"></i> Lisans Sartlari</a></li>
-							<li><a href="#"><i class="icon-road"></i> Site Haritasi</a></li>
-							<li><a href="#"><i class="icon-search"></i> Arama Paneli</a></li>
+							{% for sayfa in sayfalar %}
+							<li><a href="{{ sayfa.get_absolute_url }}" title="{{ sayfa.aciklama_sef }}"><i class="{{ sayfa.resim }}"></i> {{ sayfa.sef_baslik }}</a></li>
+							{% endfor %}
 						</ul>
 						<br>					
 						<h3 class="submenu">Makaleler</h3>
 						<ul class="nav nav-list">
 							{% for lmakale in listmakale %}
-							<li><a href="{{ lmakale.get_absolute_url }}" title="{{ lmakale.aciklama_sef }}"><i class="{{ lmakale.kategori.kategori_resim }}"></i> {{ lmakale.sef_baslik }}</a></li>
+							<li><a href="{{ lmakale.get_absolute_url }}" title="{{ lmakale.aciklama_sef }}"><i class="{{ lmakale.kategori.kategori_resim }}"></i> {% if lmakale.sef_baslik|length >= 25 %} {{ lmakale.sef_baslik|slice:":25" }}... {% else %} {{ lmakale.sef_baslik }} {% endif %}</a></li>
 							{% endfor %}
 						</ul>
 						<br>
 						<h3 class="submenu">Dosyalar</h3>
 						<ul class="nav nav-list">
-							<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
-							<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
-							<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
-							<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
-							<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
+							{% for dosya in dosyalar %}
+							<li><a href="{{ dosya.get_absolute_url }}" title="{{ dosya.aciklama_sef }}"><i class="icon-download"></i> {% if dosya.sef_baslik|length >= 25 %} {{ dosya.sef_baslik|slice:":25" }}... {% else %} {{ dosya.sef_baslik }} {% endif %}</a></li>
+							{% endfor %}
 						</ul>
 						<br>
 						<h3 class="submenu">Duyurular</h3>

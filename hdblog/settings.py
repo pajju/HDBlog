@@ -137,6 +137,7 @@ INSTALLED_APPS = (
 	'hdyazi',
 	'hdmakale',
 	'hdsayfalar',
+	'hddosya',
 )
 
 # A sample logging configuration. The only tangible logging

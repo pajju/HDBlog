@@ -1,46 +1,6 @@
-<!DOCTYPE html>
-<html lang="tr">
-	<head>
-		<!-- Meta Etiketleri // Arama Motoru Hosgeldiniz  -->
-		<meta charset="iso-8859">
-		<title>Halit Alptekin</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-		<meta name="keywords" content="halit, alptekin, programlama, blog, personal blog, kisisel blog, halit alptekin, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-		<meta name="author" content="Halit Alptekin">
-		<meta name="generator" content="Adobe Firewoks CS5, Bootstrap, Python, Django" />
-		<meta name="robots" content="index, follow, all"/>
-
-		<!--Stiller -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-		<style type="text/css">
-			body {
-				padding-top: 60px;
-				padding-bottom: 40px;
-			}
-			body, p {
-				font-size: 14px;
-			}
-			p .lead {
-				font-size: 20px;
-			}
-			.footer{
-				text-align: center;
-			}
-			.submenu{
-				color: #777777;
-			}
-		</style>	
-		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-		<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link rel="shortcut icon" href="ico/favicon.ico">
-	</head>
-
-	<body>
-		<!-- Nav Bar -->
+{% extends "base.html" %}
+{% block baslik %}Halit Alptekin Personal Blog - Dosyalar{% endblock %}
+{% block navbar %}
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
@@ -49,22 +9,22 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="index.html">Halit Alptekin</a>
+					<a class="brand" href="/">Halit Alptekin</a>
 					<div class="nav-collapse">
 						<ul class="nav">
-							<li><a href="index.html">Anasayfa</a></li>
-							<li><a href="single.html">Blog</a></li>
-							<li><a href="makaleler.html">Makaleler</a></li>
-							<li><a href="dosyalar.html">Dosyalar</a></li>
-							<li><a href="#">Hakkimda</a></li>
-							<li><a href="#">Iletisim</a></li>
+							<li><a href="/">Anasayfa</a></li>
+							<li><a href="/blog">Blog</a></li>
+							<li><a href="/makaleler">Makaleler</a></li>
+							<li><a href="/dosyalar">Dosyalar</a></li>
+							<li><a href="/sayfa/hakkimda">Hakkimda</a></li>
+							<li><a href="/iletisim">Iletisim</a></li>
 						</ul>				
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<div class="container">
+{% endblock %}
+{% block content %}
 			<div class="row">
 				<div class="span3">
 					<h3 class="submenu">HdBlog</h3>
@@ -74,36 +34,35 @@
 					</div>
 					<h3 class="submenu">Kategoriler</h3>
 					 <ul class="nav nav-list">
-						<li><a href="#"><i class="icon-user"></i> Kisisel</a></li>
-						<li><a href="#"><i class="icon-fire"></i> Internet</a></li>
-						<li><a href="#"><i class="icon-pencil"></i> Programlama</a></li>
-						<li><a href="#"><i class="icon-off"></i> Guvenlik</a></li>
-						<li><a href="#"><i class="icon-leaf"></i> Linux</a></li>
+						<li class="nav-header">Blog</li>
+						{% for kategori in kategoriler %}
+						<li><a href="{{ kategori.get_absolute_url }}" title="{{ kategori.aciklama_sef }}"><i class="{{ kategori.kategori_resim }}"></i> {{ kategori.sef_baslik }}</a></li>
+						{% endfor %}
+						<li class="nav-header">Makale</li>	
+						{% for mkategori in mkategoriler %}
+						<li><a href="{{ mkategori.get_absolute_url }}" title="{{ mkategori.aciklama_sef }}"><i class="{{ mkategori.kategori_resim }}"></i> {{ mkategori.sef_baslik }}</a></li>
+						{% endfor %}							
 					</ul>
 					<br>
 					<h3 class="submenu">Sayfalar</h3>
 					 <ul class="nav nav-list">
-						<li><a href="#"><i class="icon-warning-sign"></i> Lisans Sartlari</a></li>
-						<li><a href="#"><i class="icon-road"></i> Site Haritasi</a></li>
-						<li><a href="#"><i class="icon-search"></i> Arama Paneli</a></li>
+						{% for sayfa in sayfalar %}
+						<li><a href="{{ sayfa.get_absolute_url }}" title="{{ sayfa.aciklama_sef }}"><i class="{{ sayfa.resim }}"></i> {{ sayfa.sef_baslik }}</a></li>
+						{% endfor %}
 					</ul>
 					<br>					
 					<h3 class="submenu">Makaleler</h3>
 					<ul class="nav nav-list">
-						<li><a href="#" target="_blank" title="Deneme Makale"><i class="icon-book"></i> Deneme Makale</a></li>
-						<li><a href="#" target="_blank" title="Deneme Makale"><i class="icon-book"></i> Deneme Makale</a></li>
-						<li><a href="#" target="_blank" title="Deneme Makale"><i class="icon-book"></i> Deneme Makale</a></li>
-						<li><a href="#" target="_blank" title="Deneme Makale"><i class="icon-book"></i> Deneme Makale</a></li>
-						<li><a href="#" target="_blank" title="Deneme Makale"><i class="icon-book"></i> Deneme Makale</a></li>
+						{% for makale in makaleler %}
+						<li><a href="{{ makale.get_absolute_url }}" title="{{ makale.aciklama_sef }}"><i class="{{ makale.kategori.kategori_resim }}"></i> {% if makale.sef_baslik|length >= 25 %} {{ makale.sef_baslik|slice:":25" }}... {% else %} {{ makale.sef_baslik }} {% endif %}</a></li>
+						{% endfor %}
 					</ul>
 					<br>
 					<h3 class="submenu">Dosyalar</h3>
 					<ul class="nav nav-list">
-						<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
-						<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
-						<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
-						<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
-						<li><a href="#" target="_blank" title="Deneme Dosya"><i class="icon-download"></i> Deneme Dosya</a></li>
+						{% for dosya in dosyalar %}
+						<li><a href="{{ dosya.get_absolute_url }}" title="{{ dosya.aciklama_sef }}"><i class="icon-download"></i> {% if dosya.sef_baslik|length >= 25 %} {{ dosya.sef_baslik|slice:":25" }}... {% else %} {{ dosya.sef_baslik }} {% endif %}</a></li>
+						{% endfor %}
 					</ul>
 					<br>
 					<h3 class="submenu">Duyurular</h3>
@@ -125,105 +84,38 @@
 					</ul>
 					<br>					
 					<a href="#" class="thumbnail">
-						<img src="260x180.gif" alt="">
+						<img src="/media/260x180.gif" alt="">
 					</a>
 					<br>
 					<a href="#" class="thumbnail">
-						<img src="260x180.gif" alt="">
+						<img src="/media/260x180.gif" alt="">
 					</a>
 				</div>
 				<div class="span9">
 					<div class="alert alert-info">
 					  <a class="close" data-dismiss="alert" href="#">&times;</a>
 						<div class="row">
-						  <div class="span4"><h4 class="alert-heading">Reklam Alani #1</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></div>
-						  <div class="span4"><h4 class="alert-heading">Reklam Alani #2</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></div>
+						  <div class="span4"><h4 class="alert-heading">Reklam Alani #1</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
+						  <div class="span4"><h4 class="alert-heading">Reklam Alani #2</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
 						</div>
 					</div>
-					<h1><a href="dosya.html">Dosyalar</a> <small>Dosyalar Indýren Kisinin Sorumlulugundadir</small></h1>
+					<h1><a href="dosya.html">Dosyalar</a> <small>Dosyalar Indiren Kisinin Sorumlulugundadir</small></h1>
 					<ul class="thumbnails">
+					{% load pagination_tags %}
+					{% autopaginate dosyalar 5 %}
+					{% for dosya in dosyalar %}
 						<li class="span3">
 						  <div class="thumbnail">
-							<img src="img/dosya/pdf.png" alt="">
+							<img src="/media/img/dosya/{{ dosya.dosya_resim }}.png" alt="{{ dosya.aciklama_sef }}">
 							<div class="caption">
-							  <h5>Dosya Basligi</h5>
-							  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-							  <p><a href="dosya.html" class="btn btn-primary">Indir</a> <a href="#" class="btn">Aciklama</a></p>
+							  <h5>{{ dosya.baslik }}</h5>
+							  <p>{% if dosya.aciklama|length >= 60 %} {{ dosya.aciklama|slice:":60" }}... {% else %} {{ dosya.aciklama }} {% endif %} </p>
+							  <p><a href="{{ dosya.dosya_kaynak }}" class="btn btn-primary">Indir</a> <a href="{{ dosya.get_absolute_url }}" class="btn">Aciklama</a></p>
 							</div>
 						  </div>
 						</li>
-						<li class="span3">
-						  <div class="thumbnail">
-							<img src="img/dosya/exe.png" alt="">
-							<div class="caption">
-							  <h5>Dosya Basligi</h5>
-							  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-							  <p><a href="#" class="btn btn-primary">Indir</a> <a href="#" class="btn">Aciklama</a></p>
-							</div>
-						  </div>
-						</li>
-						<li class="span3">
-						  <div class="thumbnail">
-							<img src="img/dosya/python.png" alt="">
-							<div class="caption">
-							  <h5>Dosya Basligi</h5>
-							  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-							  <p><a href="#" class="btn btn-primary">Indir</a> <a href="#" class="btn">Aciklama</a></p>
-							</div>
-						  </div>
-						</li>
-						<li class="span3">
-						  <div class="thumbnail">
-							<img src="img/dosya/c.png" alt="">
-							<div class="caption">
-							  <h5>Dosya Basligi</h5>
-							  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-							  <p><a href="#" class="btn btn-primary">Indir</a> <a href="#" class="btn">Aciklama</a></p>
-							</div>
-						  </div>
-						</li>
-						<li class="span3">
-						  <div class="thumbnail">
-							<img src="img/dosya/cplus.png" alt="">
-							<div class="caption">
-							  <h5>Dosya Basligi</h5>
-							  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-							  <p><a href="#" class="btn btn-primary">Indir</a> <a href="#" class="btn">Aciklama</a></p>
-							</div>
-						  </div>
-						</li>
-						<li class="span3">
-						  <div class="thumbnail">
-							<img src="img/dosya/script.png" alt="">
-							<div class="caption">
-							  <h5>Dosya Basligi</h5>
-							  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-							  <p><a href="#" class="btn btn-primary">Indir</a> <a href="#" class="btn">Aciklama</a></p>
-							</div>
-						  </div>
-						</li>						
-					</ul>
-					<br>
-					<hr>
-					<!-- Sayfalama -->
-					<div class="pagination">
-					  <ul>
-						<li><a href="#">Geri</a></li>
-						<li class="active">
-						  <a href="#">1</a>
-						</li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">6</a></li>
-						<li><a href="#">7</a></li>
-						<li><a href="#">8</a></li>
-						<li><a href="#">9</a></li>
-						<li><a href="#">10</a></li>
-						<li><a href="#">Ileri</a></li>
-					  </ul>
-					</div>			
+					{% endfor %}
+					{% paginate %}
 				</div>
 			</div>
 			<hr>
@@ -234,9 +126,12 @@
 					<p><span class="label label-info">Halit Alptekin &copy; 2012</span></p>
 				</div>
 			</div>
+{% endblock %}	
+{% block javascriptler %}
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap-alert.js"></script>
+{% endblock %}		
+
 		</div>
-		<!-- Javascriptler -->
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap-alert.js"></script>
 	</body>
 </html>

@@ -15,9 +15,9 @@
 							<li><a href="/">Home</a></li>
 							<li><a href="/blog">Blog</a></li>
 							<li><a href="/makaleler">Articles</a></li>
-							<li><a href="dosyalar.html">Files</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="/dosyalar">Files</a></li>
+							<li><a href="/sayfa/hakkimda">About</a></li>
+							<li><a href="/iletisim">Contact</a></li>
 						</ul>				
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 					<ul>
 					{% for yazi in yazilar %}
 						{% if forloop.first %}
-						<li> <span class="label label-success">New</span> <a href="{{ yazi.get_absolute_url }}" title="{{ yazi.aciklama_sef }}">{{ yazi.sef_baslik }}</a> </li>
+						<li> <span class="label label-success">New</span> <a href="{{ yazi.get_absolute_url }}" title="{{ yazi.aciklama_sef }}">{% if yazi.sef_baslik|length >= 25 %} {{ yazi.sef_baslik|slice:":25" }}... {% else %} {{ yazi.sef_baslik }} {% endif %}</a> </li>
 						{% else %}
 						<li> <a href="{{ yazi.get_absolute_url }}" title="{{ yazi.aciklama_sef }}">{{ yazi.sef_baslik }}</a> </li>
 						{% endif %}
