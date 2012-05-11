@@ -10,15 +10,15 @@ Maybe it is simple,but it is going to develop.
 HD-Blog
 ======
 
-Tema: Bootstrap
+Tema: <b>Bootstrap</b>
 
-Etiketler: django-tagging
+Etiketler: <b>django-tagging</b>
 
-Sayfalama: pagination
+Sayfalama: <b>pagination</b>
 
-Migrate: South
+Migrate: <b>South</b>
 
-Admin Paneli Metin Editörü: Ckeditor
+Admin Paneli Metin Editörü: <b>Ckeditor</b>
 
 Full SEO
 
