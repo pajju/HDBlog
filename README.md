@@ -1,4 +1,4 @@
-HDBlog
+Info
 ======
 
 HDBlog is a cool django blog project.It was created by Bootstrap and Django.
