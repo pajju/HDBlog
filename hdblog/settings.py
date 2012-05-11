@@ -133,8 +133,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 	'tagging',
 	'pagination',
+	'south',
 	'hdyazi',
 	'hdmakale',
+	'hdsayfalar',
 )
 
 # A sample logging configuration. The only tangible logging

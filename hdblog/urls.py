@@ -17,6 +17,8 @@ urlpatterns = patterns('',
 	url(r'^makale/(?P<kat_slug>.*)/(?P<slug>.*)/$', 'hdyazi.views.makale', name='makale'),
 	url(r'^makale/(?P<kat_slug>.*)/$', 'hdyazi.views.mkategori', name='mkategori'),		
 	url(r'^makaleler/(?P<tag_name>.*)/$', 'hdyazi.views.metiket', name='metiket'),
+	
+	url(r'^sayfa/(?P<slug>.*)/$', 'hdyazi.views.sayfalar', name='sayfalar'),
 
     # url(r'^hdblog/', include('hdblog.foo.urls')),
     url(r'^admin/', include(admin.site.urls)),
