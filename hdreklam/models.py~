@@ -16,7 +16,7 @@ class Banner(models.Model):
    
    resim			= models.ImageField(upload_to="reklam/", help_text="260x180 Onerilir")
    
-   yayindami		= models.BooleanField(verbose_name="Yayinda Mi?", default=True, help_text = "Yayinda Mi Olsun?")
+   yayindami		= models.BooleanField(verbose_name="Yayinda Mi?", default=True, help_text = "Yayinda Mi?")
    
    olusturulma 	    = models.DateTimeField(auto_now_add=True, verbose_name="Olusturulma Tarihi")
    bitis			= models.DateTimeField(verbose_name="Bitis Tarihi")
