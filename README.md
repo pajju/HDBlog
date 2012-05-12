@@ -10,23 +10,25 @@ Maybe it is simple,but it is going to develop.
 HD-Blog
 ======
 
-Temasını Bootstrap ile oluşturdum.
+Tema: <b>Bootstrap</b>
 
-Etiketler için django-tagging kullandım.
+Etiketler: <b>django-tagging</b>
 
-Admin panelinde metin editörü olarak ckeditör var.
+Sayfalama: <b>pagination</b>
 
-Yazıların içine girildiğinde seo amaçlı olarak meta kodlarına otomatik olarak açıklama ve etiketleri ekliyor.
+Migrate: <b>South</b>
 
-Yazıların alt kısmında yazı ile ilgili etiketler,açıklamalar,kelime sayısı,metin uzunluğu ve sosyal paylaşım gibi özellikler bulunuyor.
+Admin Paneli Metin Editörü: <b>Ckeditor</b>
 
-Her kategori için ayrı bir bootstrap iconu seçebiliyorsunuz.
+Full SEO
 
-Yazılar listelenirken yazı başlığı,yazı açıklaması ve yazı anasayfa içeriği gösterilir.
+Yazı Altlarında: etiketler,açıklamalar,kelime sayısı,metin uzunluğu ve sosyal paylaşım
 
-Anasayfayı kendime göre düzenledim.Ancak ilerleyen zamanlarda genel_ayarlar adında bir uygulama açıp o kısımlarıda veritabanından çekmeyi düşünüyorum.
+Her kategori için ayrı bir icon seçebiliyorsunuz.
 
-Anasayfada son blog yazıları listeleniyor ve en son yazının yanına New etiketini ekliyor.
+Anasayfa içerik ve tüm içerik farklıdır.
+
+Giriş sayfasında son blog yazıları listeleniyor ve en son yazının yanına New etiketini ekliyor.
 
 
 HD-Makale
@@ -40,15 +42,15 @@ Sol taraftaki son makalelerde yanındaki logo kategorisinin logosudur.
 HD-Dosyalar
 ======
 
-Şu anlık kodlanması yok.Sadece templates içerisinde şablonu var.Ona bakıp fikir edinebilirsiniz.
+Panelde dosya eklemesi yapabildiğiniz gibi direk kaynakta belirtebilirsiniz.
+
+Ben kaynak linki, link kısaltma uygulamasıyla kısaltıp ekleme yapıyorum.Bu sizin tercihinizdir.
 
 
 HD-Duyurular
 ======
 
 Her duyuru için ayrı bir link olacak.Bu link yapısı büyük ihtimal /duyuru/24022012/ şeklinde veya /duyuru/24022012.html olacaktır.
-
-Bu kısımları kendi zevkinize göre değiştirebilirsiniz.
 
 
 HD-Reklamlar
@@ -62,24 +64,20 @@ Zamanı biten reklamları 3-4 gün önceden mail ile haber verecek.
 HD-Sayfalar
 ======
 
-Flatpages kullanmayı düşünüyorum.Ancak zaman ne gösterir bilinmez.
+Ayrı bir uygulaması var.Panelde ekleme yapabiliyorsunuz.
 
 
 HD-Linkler
 ======
 
-Link kısaltma servisi içericek.Dosyalarda kullandığım kaynak linkleri burada kısaltılacak.
+Linkleri idsine göre kısaltıyor.Siteden dışarıya link vereceğim zaman kullanmak için tasarladım.
 
-Örneğin: link/a12fg gibi olacak.
-
-Bu olayı seo amaçlı yapıyorum.Ne kadar dışarıya az link verirsek o kadar kardayız.
+Sadece uygulama olarak alınıp kullanılabilir.
 
 
 Son Not
 ======
 
-Django ile yaptığım ilk proje olduğu için çok fazla amatör olduğunu biliyorum.Kendimi zamanla geliştirdikçe bu scriptte gelişecektir.
+Bu proje benim Django ile yaptığım ilk elle tutulur şey.Zamanla geliştirmeyi düşünüyorum.Kendi kişisel sitemde de aynı scripti kullanacağım.
 
-Github'a koyma amacım milletin indirip kullanması değil(ki kimsenin kullanacağını düşünmüyorum :D) kodlarıma heryerden erişim sağlamak ve gelişim durumu mu farketmektir.
-
-Eksik,açık,öneri,övgü,sövgü dolu mesajlarınızı bana iletirseniz çok sevinirim.
+Zamanla gelişip fazlalıklardan kurtulacak diye düşünüyorum.Yardımlarınızı esirgemezseniz sevinirim.
