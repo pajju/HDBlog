@@ -81,27 +81,27 @@
 						<br>
 						<h3 class="submenu">Reklamlar</h3>
 						<ul class="nav nav-list">
-							<li><a href="#" title="Deneme Reklam"><i class="icon-shopping-cart"></i> Deneme Reklam</a></li>
-							<li><a href="#" title="Deneme Reklam"><i class="icon-shopping-cart"></i> Deneme Reklam</a></li>
-							<li><a href="#" title="Deneme Reklam"><i class="icon-shopping-cart"></i> Deneme Reklam</a></li>
-							<li><a href="#" title="Deneme Reklam"><i class="icon-shopping-cart"></i> Deneme Reklam</a></li>
-							<li><a href="#" title="Deneme Reklam"><i class="icon-shopping-cart"></i> Deneme Reklam</a></li>
+							{% for tanitim in tanitimlar %}
+							<li><a href="{{ tanitim.get_absolute_url }}" title="{{ tanitim.aciklama_sef }}"><i class="{{ tanitim.resim }}"></i> {% if tanitim.sef_baslik|length >= 25 %} {{ tanitim.sef_baslik|slice:":25" }}... {% else %} {{ tanitim.sef_baslik }} {% endif %}</a></li>
+							{% endfor %}
 						</ul>
-						<br>					
-						<a href="#" class="thumbnail">
-							<img src="/media/260x180.gif" alt="">
+						<br>
+						{% for ban in banner %}
+						<a href="{{ ban.link }}" class="thumbnail" title="{{ ban.sef_baslik }}">
+							<img src="/media/{{ ban.resim }}" alt="{{ ban.aciklama_sef }}" title="{{ ban.aciklama_sef }}">
 						</a>
 						<br>
-						<a href="#" class="thumbnail">
-							<img src="/media/260x180.gif" alt="">
-						</a>
+						{% endfor %}
 					</div>
 					<div class="span9">
 						<div class="alert alert-info">
-						  <a class="close" data-dismiss="alert" href="#">&times;</a>
+							<a class="close" data-dismiss="alert" href="#">&times;</a>
 							<div class="row">
-							  <div class="span4"><h4 class="alert-heading">Reklam Alani #1</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
-							  <div class="span4"><h4 class="alert-heading">Reklam Alani #2</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
+							{% for tex in textlink %}
+							{% if tex.sira == 1 or tex.sira == 2 %}
+							<div class="span4"><a href="{{ tex.link }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
+							{% endif %}
+							{% endfor %}
 							</div>
 						</div>
 						<div class="alert alert-block">
@@ -163,10 +163,13 @@
 						</ul>
 						<hr>
 						<div class="alert alert-info">
-						  <a class="close" data-dismiss="alert" href="#">&times;</a>
+							<a class="close" data-dismiss="alert" href="#">&times;</a>
 							<div class="row">
-							  <div class="span4"><h4 class="alert-heading">Reklam Alani #3</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
-							  <div class="span4"><h4 class="alert-heading">Reklam Alani #4</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
+							{% for tex in textlink %}
+							{% if tex.sira == 3 or tex.sira == 4 %}
+							<div class="span4"><a href="{{ tex.link }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
+							{% endif %}
+							{% endfor %}
 							</div>
 						</div>							
 					</div>

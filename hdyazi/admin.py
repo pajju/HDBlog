@@ -6,6 +6,7 @@ from hdsayfalar.models import Sayfalar
 from hddosya.models import Dosyalar
 from hdlink.models import Link
 from hdduyuru.models import Duyurular
+from hdreklam.models import Banner, TextLink, TanitimYazisi
 from django.db import models
 
 class KategoriAdmin(admin.ModelAdmin):
@@ -49,7 +50,20 @@ class DuyurularAdmin(admin.ModelAdmin):
    prepopulated_fields = {"slug": ("baslik",)} 
    formfield_overrides = { models.TextField: {'widget': forms.Textarea(attrs={'class':'ckeditor'})}, }
    class Media:
-		js = ('ckeditor/ckeditor.js',)  	
+		js = ('ckeditor/ckeditor.js',)
+
+class TanitimYazisiAdmin(admin.ModelAdmin):
+   list_display = ('baslik','yazar','aciklama','olusturulma','degistirilme')
+   prepopulated_fields = {"slug": ("baslik",)} 
+   formfield_overrides = { models.TextField: {'widget': forms.Textarea(attrs={'class':'ckeditor'})}, }
+   class Media:
+		js = ('ckeditor/ckeditor.js',) 
+
+class TextLinkAdmin(admin.ModelAdmin):
+	list_display = ('baslik','aciklama','bitis') 
+	
+class BannerAdmin(admin.ModelAdmin):
+	list_display = ('baslik','aciklama','bitis') 		
 	
 admin.site.register(Yazilar, YazilarAdmin)
 admin.site.register(Kategoriler, KategoriAdmin)
@@ -58,4 +72,7 @@ admin.site.register(mKategoriler, mKategoriAdmin)
 admin.site.register(Sayfalar, SayfalarAdmin)
 admin.site.register(Dosyalar, DosyaAdmin)
 admin.site.register(Link, LinkAdmin)
-admin.site.register(Duyurular,DuyurularAdmin)
+admin.site.register(Duyurular, DuyurularAdmin)
+admin.site.register(TanitimYazisi, TanitimYazisiAdmin)
+admin.site.register(TextLink, TextLinkAdmin)
+admin.site.register(Banner, BannerAdmin)

@@ -1,5 +1,9 @@
 {% extends "base.html" %}
-{% block baslik %}{{ duyuru.baslik }}{% endblock %}
+{% block baslik %}{{ tanitim.baslik }}{% endblock %}
+{% block metalar %}
+		<meta name="description" content="{{ tanitim.aciklama_sef }}">
+		<meta name="keywords" content="{{ tanitim.etiketler }}">
+{% endblock %}
 {% block cssler %}
 		<link href="/static/js/prettify/prettify.css" rel="stylesheet">
 		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -82,10 +86,6 @@
 							<li><a href="{{ tanitim.get_absolute_url }}" title="{{ tanitim.aciklama_sef }}"><i class="{{ tanitim.resim }}"></i> {% if tanitim.sef_baslik|length >= 25 %} {{ tanitim.sef_baslik|slice:":25" }}... {% else %} {{ tanitim.sef_baslik }} {% endif %}</a></li>
 							{% endfor %}
 						</ul>
-						<br>					
-						<a href="#" class="thumbnail">
-							<img src="/media/260x180.gif" alt="">
-						</a>
 						<br>
 						{% for ban in banner %}
 						<a href="{{ ban.link }}" class="thumbnail" title="{{ ban.sef_baslik }}">
@@ -96,27 +96,27 @@
 					</div>
 					<div class="span9">
 						<div class="alert alert-info">
-						  <a class="close" data-dismiss="alert" href="#">&times;</a>
+							<a class="close" data-dismiss="alert" href="#">&times;</a>
 							<div class="row">
-							  {% for tex in textlink %}
-							  {% if tex.sira == 1 or tex.sira == 2 %}
-							  <div class="span4"><a href="{{ tex.link }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
-							  {% endif %}
-							  {% endfor %}
+							{% for tex in textlink %}
+							{% if tex.sira == 1 or tex.sira == 2 %}
+							<div class="span4"><a href="{{ tex.link }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
+							{% endif %}
+							{% endfor %}
 							</div>
 						</div>
-						<h1><a>{{ duyuru.baslik|title }}</a> <small>{{ duyuru.olusturulma|date:"d F Y" }} <g:plusone size="medium"></g:plusone></small></h1> 
-						<p class="lead"> {{ duyuru.aciklama|title }}</p>
-						{{ duyuru.icerik|safe }}
+						<h1><a>{{ tanitim.baslik|title }}</a> <small>{{ tanitim.olusturulma|date:"d F Y" }} <g:plusone size="medium"></g:plusone></small></h1> 
+						<p class="lead"> {{ tanitim.aciklama|title }}</p>
+						{{ tanitim.icerik|safe }}
 						<hr>
 						<div class="alert alert-info">
-						  <a class="close" data-dismiss="alert" href="#">&times;</a>
+							<a class="close" data-dismiss="alert" href="#">&times;</a>
 							<div class="row">
-							  {% for tex in textlink %}
-							  {% if tex.sira == 3 or tex.sira == 4 %}
-							  <div class="span4"><a href="{{ tex.link }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
-							  {% endif %}
-							  {% endfor %}
+							{% for tex in textlink %}
+							{% if tex.sira == 3 or tex.sira == 4 %}
+							<div class="span4"><a href="{{ tex.link }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
+							{% endif %}
+							{% endfor %}
 							</div>
 						</div>
 						<br>
@@ -129,25 +129,36 @@
 									Yazar
 								</th>
 								<td>
-									<a href="#"><span class="label label-info">{{ duyuru.yazar.first_name }} {{ duyuru.yazar.last_name }}</span></a>
+									<a href="#"><span class="label label-info">{{ tanitim.yazar.first_name }} {{ tanitim.yazar.last_name }}</span></a>
 								</td>
 							</tr>
-							
+
 							<tr>
 								<th>
 									Aciklama
 								</th>
 								<td>
-									{{ duyuru.aciklama_sef }}
+									{{ tanitim.aciklama_sef }}
 								</td>
-							</tr>												
+							</tr>						
+							
+							<tr>
+								<th>
+									Etiketler
+								</th>
+								<td>
+									{% for etiket in tanitim.get_tags %}
+									<a href="/tanitim/etiket/{{ etiket }}" title="{{ etiket }}"><span class="label label-info"># {{ etiket }}</span></a>
+									{% endfor %}
+								</td>
+							</tr>						
 
 							<tr>
 								<th>
 									Kelime Sayisi
 								</th>
 								<td>
-									{{ duyuru.icerik|wordcount }}
+									{{ tanitim.icerik|wordcount }}
 								</td>
 							</tr>
 
@@ -156,7 +167,7 @@
 									Metin Uzunlugu
 								</th>
 								<td>
-									{{ duyuru.icerik|length }}
+									{{ tanitim.icerik|length }}
 								</td>
 							</tr>
 
@@ -165,7 +176,7 @@
 									Eklenme Tarihi
 								</th>
 								<td>
-									{{ duyuru.olusturulma }}
+									{{ tanitim.olusturulma }}
 								</td>
 							</tr>
 							
@@ -174,7 +185,7 @@
 									Guncellenme Tarihi
 								</th>
 								<td>
-									{{ duyuru.degistirilme }}
+									{{ tanitim.degistirilme }}
 								</td>
 							</tr>							
 							
@@ -183,7 +194,7 @@
 									Sosyal Medya
 								</th>
 								<td>
-									<a href="http://www.facebook.com/share.php?u={{ site.domain }}{{ duyuru.get_absolute_url }}" target="_blank" title="{{ duyuru.aciklama_sef }}"><img width="24" height="24" src="/media/img/sosyal/facebook.png" alt="Facebook"></a>
+									<a href="http://www.facebook.com/share.php?u={{ site.domain }}{{ tanitim.get_absolute_url }}" target="_blank" title="{{ tanitim.aciklama_sef }}"><img width="24" height="24" src="/media/img/sosyal/facebook.png" alt="Facebook"></a>
 									<img width="24" height="24" src="/media/img/sosyal/friendfeed.png" alt="Friendfeed">
 									<img width="24" height="24" src="/media/img/sosyal/google.png" alt="Google">
 									<img width="24" height="24" src="/media/img/sosyal/reddit.png" alt="Reddit">

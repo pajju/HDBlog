@@ -152,7 +152,7 @@ class Sayfalar(models.Model):
    aciklama    	    = models.CharField(max_length=500, verbose_name="Aciklama", help_text = "Baslik Aciklamasi")
    aciklama_sef	    = models.CharField(max_length=500, verbose_name="Aciklama Sef", help_text = "Aciklama Sef", blank=True)
    
-   #resim   			= models.CharField(max_length=255, verbose_name="Resim", help_text = "Resim", choices=KATEGORI_RESIMLERI) 
+   resim   			= models.CharField(max_length=255, verbose_name="Resim", help_text = "Resim", choices=KATEGORI_RESIMLERI) 
    
    icerik       	= models.TextField(verbose_name="Tum Icerik", help_text = "Tum Icerik")
    
