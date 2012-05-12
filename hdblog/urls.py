@@ -26,6 +26,8 @@ urlpatterns = patterns('',
 	url(r'^link/$', 'hdlink.views.linkolustur'),
     url(r'^link/(?P<id>\w+)/$', 'hdlink.views.link'),
     url(r'^link/(?P<id>\w+)/stats$', 'hdlink.views.stats'),
+	
+	url(r'^duyuru/(?P<slug>.*)/$', 'hdyazi.views.duyuru', name='duyuru'),
 
     # url(r'^hdblog/', include('hdblog.foo.urls')),
     url(r'^admin/', include(admin.site.urls)),

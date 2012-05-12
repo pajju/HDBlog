@@ -1,9 +1,5 @@
 {% extends "base.html" %}
-{% block baslik %}{{ yazi.baslik }}{% endblock %}
-{% block metalar %}
-		<meta name="description" content="{{ yazi.aciklama_sef }}">
-		<meta name="keywords" content="{{ yazi.etiketler }}">
-{% endblock %}
+{% block baslik %}{{ duyuru.baslik }}{% endblock %}
 {% block cssler %}
 		<link href="/static/js/prettify/prettify.css" rel="stylesheet">
 		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -105,9 +101,9 @@
 							  <div class="span4"><h4 class="alert-heading">Reklam Alani #2</h4><span>Bu alana sitenizin reklamini vermek icin <a href="#"><strong>tiklayiniz</strong></a></span></div>
 							</div>
 						</div>
-						<h1><a>{{ yazi.baslik|title }}</a> <small>{{ yazi.olusturulma|date:"d F Y" }} <g:plusone size="medium"></g:plusone></small></h1> 
-						<p class="lead"> {{ yazi.aciklama|title }}</p>
-						{{ yazi.icerik|safe }}
+						<h1><a>{{ duyuru.baslik|title }}</a> <small>{{ duyuru.olusturulma|date:"d F Y" }} <g:plusone size="medium"></g:plusone></small></h1> 
+						<p class="lead"> {{ duyuru.aciklama|title }}</p>
+						{{ duyuru.icerik|safe }}
 						<hr>
 						<div class="alert alert-info">
 						  <a class="close" data-dismiss="alert" href="#">&times;</a>
@@ -126,45 +122,25 @@
 									Yazar
 								</th>
 								<td>
-									<a href="#"><span class="label label-info">{{ yazi.yazar.first_name }} {{ yazi.yazar.last_name }}</span></a>
+									<a href="#"><span class="label label-info">{{ duyuru.yazar.first_name }} {{ duyuru.yazar.last_name }}</span></a>
 								</td>
 							</tr>
 							
-							<tr>
-								<th>
-									Kategori
-								</th>
-								<td>
-									<a href="{{ yazi.kategori.get_absolute_url }}"><span class="label label-info">{{ yazi.kategori }}</span></a>
-								</td>
-							</tr>
-
 							<tr>
 								<th>
 									Aciklama
 								</th>
 								<td>
-									{{ yazi.aciklama_sef }}
+									{{ duyuru.aciklama_sef }}
 								</td>
-							</tr>						
-							
-							<tr>
-								<th>
-									Etiketler
-								</th>
-								<td>
-									{% for etiket in yazi.get_tags %}
-									<a href="/blog/etiket/{{ etiket }}" title="{{ etiket }}"><span class="label label-info"># {{ etiket }}</span></a>
-									{% endfor %}
-								</td>
-							</tr>						
+							</tr>												
 
 							<tr>
 								<th>
 									Kelime Sayisi
 								</th>
 								<td>
-									{{ yazi.icerik|wordcount }}
+									{{ duyuru.icerik|wordcount }}
 								</td>
 							</tr>
 
@@ -173,7 +149,7 @@
 									Metin Uzunlugu
 								</th>
 								<td>
-									{{ yazi.icerik|length }}
+									{{ duyuru.icerik|length }}
 								</td>
 							</tr>
 
@@ -182,7 +158,7 @@
 									Eklenme Tarihi
 								</th>
 								<td>
-									{{ yazi.olusturulma }}
+									{{ duyuru.olusturulma }}
 								</td>
 							</tr>
 							
@@ -191,7 +167,7 @@
 									Guncellenme Tarihi
 								</th>
 								<td>
-									{{ yazi.degistirilme }}
+									{{ duyuru.degistirilme }}
 								</td>
 							</tr>							
 							
@@ -200,7 +176,7 @@
 									Sosyal Medya
 								</th>
 								<td>
-									<a href="http://www.facebook.com/share.php?u={{ site.domain }}{{ yazi.get_absolute_url }}" target="_blank" title="{{ yazi.aciklama_sef }}"><img width="24" height="24" src="/media/img/sosyal/facebook.png" alt="Facebook"></a>
+									<a href="http://www.facebook.com/share.php?u={{ site.domain }}{{ duyuru.get_absolute_url }}" target="_blank" title="{{ duyuru.aciklama_sef }}"><img width="24" height="24" src="/media/img/sosyal/facebook.png" alt="Facebook"></a>
 									<img width="24" height="24" src="/media/img/sosyal/friendfeed.png" alt="Friendfeed">
 									<img width="24" height="24" src="/media/img/sosyal/google.png" alt="Google">
 									<img width="24" height="24" src="/media/img/sosyal/reddit.png" alt="Reddit">

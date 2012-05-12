@@ -71,11 +71,9 @@
 					<br>
 					<h3 class="submenu">Duyurular</h3>
 					<ul class="nav nav-list">
-						<li><a href="#" title="Deneme Duyuru"><i class="icon-exclamation-sign"></i> Deneme Duyuru</a></li>
-						<li><a href="#" title="Deneme Duyuru"><i class="icon-exclamation-sign"></i> Deneme Duyuru</a></li>
-						<li><a href="#" title="Deneme Duyuru"><i class="icon-exclamation-sign"></i> Deneme Duyuru</a></li>
-						<li><a href="#" title="Deneme Duyuru"><i class="icon-exclamation-sign"></i> Deneme Duyuru</a></li>
-						<li><a href="#" title="Deneme Duyuru"><i class="icon-exclamation-sign"></i> Deneme Duyuru</a></li>
+						{% for duyuru in duyurular %}
+						<li><a href="{{ duyuru.get_absolute_url }}" title="{{ duyuru.aciklama_sef }}"><i class="{{ duyuru.resim }}"></i> {% if duyuru.sef_baslik|length >= 25 %} {{ duyuru.sef_baslik|slice:":25" }}... {% else %} {{ duyuru.sef_baslik }} {% endif %}</a></li>
+						{% endfor %}
 					</ul>
 					<br>
 					<h3 class="submenu">Reklamlar</h3>
