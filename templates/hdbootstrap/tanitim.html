@@ -100,7 +100,7 @@
 							<div class="row">
 							{% for tex in textlink %}
 							{% if tex.sira == 1 or tex.sira == 2 %}
-							<div class="span4"><a href="{{ tex.link }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
+							<div class="span4"><a href="{{ tex.link }}" title="{{ tex.sef_baslik }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
 							{% endif %}
 							{% endfor %}
 							</div>
@@ -114,7 +114,7 @@
 							<div class="row">
 							{% for tex in textlink %}
 							{% if tex.sira == 3 or tex.sira == 4 %}
-							<div class="span4"><a href="{{ tex.link }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
+							<div class="span4"><a href="{{ tex.link }}" title="{{ tex.sef_baslik }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
 							{% endif %}
 							{% endfor %}
 							</div>
@@ -129,7 +129,7 @@
 									Yazar
 								</th>
 								<td>
-									<a href="#"><span class="label label-info">{{ tanitim.yazar.first_name }} {{ tanitim.yazar.last_name }}</span></a>
+									<a href="http://www.halitalptekin.com"><span class="label label-info">{{ tanitim.yazar.first_name }} {{ tanitim.yazar.last_name }}</span></a>
 								</td>
 							</tr>
 

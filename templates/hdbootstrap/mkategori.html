@@ -96,7 +96,7 @@
 						<div class="row">
 						{% for tex in textlink %}
 						{% if tex.sira == 1 or tex.sira == 2 %}
-						<div class="span4"><a href="{{ tex.link }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
+						<div class="span4"><a href="{{ tex.link }}" title="{{ tex.sef_baslik }}"><h4 class="alert-heading">{{ tex.baslik }}</h4></a><span>{{ tex.aciklama }}</span></div>
 						{% endif %}
 						{% endfor %}
 						</div>

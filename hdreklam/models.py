@@ -16,7 +16,7 @@ class Banner(models.Model):
    
    resim			= models.ImageField(upload_to="reklam/", help_text="260x180 Onerilir")
    
-   yayindami		= models.BooleanField(verbose_name="Yayinda Mi?", default=True, help_text = "Yayinda Mi Olsun?")
+   yayindami		= models.BooleanField(verbose_name="Yayinda Mi?", default=True, help_text = "Yayinda Mi?")
    
    olusturulma 	    = models.DateTimeField(auto_now_add=True, verbose_name="Olusturulma Tarihi")
    bitis			= models.DateTimeField(verbose_name="Bitis Tarihi")
@@ -229,8 +229,6 @@ class TanitimYazisi(models.Model):
    
    yayindami		= models.BooleanField(verbose_name="Yayinda Mi?", default=True, help_text = "Yayinda Mi?")
    
-   etiketler    	= TagField(verbose_name="Etiketler")
-   
    olusturulma 	    = models.DateTimeField(auto_now_add=True, verbose_name="Olusturulma Tarihi")
    degistirilme		= models.DateTimeField(auto_now=True, verbose_name="Degistirilme Tarihi")
 
@@ -251,6 +249,3 @@ class TanitimYazisi(models.Model):
 	   
    def get_absolute_url(self):
 	   return "/tanitim/%s/" %self.slug
-	   
-   def get_tags(self):
-	   return Tag.objects.get_for_object(self)	   
