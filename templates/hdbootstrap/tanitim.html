@@ -140,18 +140,7 @@
 								<td>
 									{{ tanitim.aciklama_sef }}
 								</td>
-							</tr>						
-							
-							<tr>
-								<th>
-									Etiketler
-								</th>
-								<td>
-									{% for etiket in tanitim.get_tags %}
-									<a href="/tanitim/etiket/{{ etiket }}" title="{{ etiket }}"><span class="label label-info"># {{ etiket }}</span></a>
-									{% endfor %}
-								</td>
-							</tr>						
+							</tr>												
 
 							<tr>
 								<th>
