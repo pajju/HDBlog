@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block baslik %}- Iletisim{% endblock %}
+{% block cssler %}
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
+{% endblock %}
+{% block navbar %}
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="/">Halit Alptekin</a>
+					<div class="nav-collapse">
+						<ul class="nav">
+							<li><a href="/">Anasayfa</a></li>
+							<li><a href="/blog">Blog</a></li>
+							<li><a href="/makaleler">Makaleler</a></li>
+							<li><a href="/dosyalar">Dosyalar</a></li>
+							<li><a href="/sayfa/hakkimda">Hakkimda</a></li>
+							<li><a href="/iletisim">Iletisim</a></li>
+						</ul>				
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}
+{% block content %}
+			<div class="row">
+					<div class="span3">
+					<div class="alert alert-info">Bu Bolumu Kullanarak Bana Her Turlu Soruyu Sorabilirsiniz.</div>
+					<div class="alert alert-info">Cevabiniz Biraktiginiz Mail Adresine Gonderilecektir.</div>
+					<div class="alert alert-info">Burasi Disinda <a href="https://twitter.com/halitalptekin"><strong>Twitter</strong></a>,<strong><a href="http://facebook.com/hltalptkn">Facebook</a></strong> ve <script type="text/javascript">document.write("<a href='mailto:&#105;&#110;&#102;&#111;&#064;&#104;&#097;&#108;&#105;&#116;&#097;&#108;&#112;&#116;&#101;&#107;&#105;&#110;&#046;&#099;&#111;&#109;?subject=Blog'><strong>E-Mail</strong></a>");</script> Uzerinden de Soru Sorabilirsiniz.</div>
+					<div class="alert alert-block">Lutfen Mesajinizi Yazarken Turkce Kurallarina Uyunuz!</div>
+					</div>
+					<div class="span9">
+					<div class="alert alert-block">Mesajiniz Alinamadi</div>
+					<div class="alert alert-block">Lutfen Daha Sonra Tekrar Deneyiniz</div>
+					</div>
+				</div>
+			<hr>
+			<!-- Alt Kisim -->
+			<div class="row">
+				<div class="span12 footer">
+					<p>Tasarim: <span class="label label-info">Bootstrap</span> Kodlama: <span class="label label-info">Python ve Django</span> Sistem: <span class="label label-info">HDBlog</span></p>
+					<p>Halit Alptekin &copy; 2012</p>
+				</div>
+			</div>
+{% endblock %}	
+{% block javascriptler %}
+	<script src="/static/js/jquery.js"></script>
+	<script src="/static/js/bootstrap-alert.js"></script>
+	<script src="/static/js/bootstrap-collapse.js"></script>
+{% endblock %}
+

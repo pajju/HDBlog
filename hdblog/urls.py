@@ -30,6 +30,8 @@ urlpatterns = patterns('',
 	url(r'^duyuru/(?P<slug>.*)/$', 'hdyazi.views.duyuru', name='duyuru'),
 	
 	url(r'^tanitim/(?P<slug>.*)/$', 'hdyazi.views.tanitim', name='tanitim'),
+	
+	url(r'^iletisim/', include('django_contactme.urls')),
 
     # url(r'^hdblog/', include('hdblog.foo.urls')),
     url(r'^admin/', include(admin.site.urls)),

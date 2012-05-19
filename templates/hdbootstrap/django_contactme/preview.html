@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block baslik %}- Iletisim - OnIzleme {% endblock %}
+{% block content %}
+			<div class="row">
+					<div class="span12">
+					  {% if not form.errors %}
+					  <div>
+						<div style="background:#eef">
+						  {{ message|linebreaks }}
+						</div>
+					  </div>
+					  {% endif %}
+
+					  {% include "django_contactme/form.html" %}
+
+					</div>
+				</div>
+{% endblock %}	

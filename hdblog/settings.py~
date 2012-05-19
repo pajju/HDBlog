@@ -133,7 +133,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 	'tagging',
 	'pagination',
-
 	'hdyazi',
 	'hdmakale',
 	'hdsayfalar',
@@ -142,7 +141,6 @@ INSTALLED_APPS = (
 	'hdduyuru',
 	'hdreklam',
 )
-
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
